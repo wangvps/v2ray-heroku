@@ -2,7 +2,7 @@
 # V2Ray new configuration
 # Run V2ray
 # Write V2Ray configuration
-cat <<-EOF > $ /etc/v2ray/config.json
+cat <<-EOF > /etc/v2ray/config.json
 {
     "inbounds": [{
         "port": 80,
@@ -26,3 +26,6 @@ cat <<-EOF > $ /etc/v2ray/config.json
 }
 EOF
 
+#Run V2ray
+
+/usr/bin/v2ray/v2ray -config=/etc/v2ray/config.json
