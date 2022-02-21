@@ -5,13 +5,13 @@
 cat << EOF > /etc/v2ray/config.json
 {
     "inbounds": [{
-        "port": 25565,
-        "protocol": "vless",
+        "port": 8080,
+        "protocol": "vmess",
         "settings": {
             "clients": [{
-                "id": "2112b632-fb6c-4781-bb42-d4d310aa532f"
-            }],
-            "decryption": "none"
+                "id": "2112b632-fb6c-4781-bb42-d4d310aa532f",
+                "alterId": 0
+            }]
         },
         "streamSettings": {
             "network": "ws",
