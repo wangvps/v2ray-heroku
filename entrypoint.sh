@@ -2,16 +2,16 @@
 # V2Ray new configuration
 # Run V2ray
 # Write V2Ray configuration
-cat <<-EOF > /etc/v2ray/config.json
+cat << EOF > /etc/v2ray/config.json
 {
     "inbounds": [{
-        "port": 80,
-        "protocol": "vmess",
+        "port": 25565,
+        "protocol": "vless",
         "settings": {
             "clients": [{
-                "id": "ba651c8c-cb35-4c46-bf6c-f90bd6f094e3",
-                "alterId": 0
-            }]
+                "id": "2112b632-fb6c-4781-bb42-d4d310aa532f"
+            }],
+            "decryption": "none"
         },
         "streamSettings": {
             "network": "ws",
