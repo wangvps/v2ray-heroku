@@ -3,17 +3,11 @@
 apt update -y 
 apt install -y wget curl
 
-echo ""
-while ture
-          do
-              read -p "请输入CPU架构，例如:amd64 arm64不支持s390x:" CPU
+read -p "请输入CPU架构，例如:amd64 arm64不支持s390x:" CPU
 
 mkdir -p /root/cloudreve
-
 wget -O /root/cloudreve/cloudreve.zip https://github.com/cloudreve/Cloudreve/releases/download/3.5.3/cloudreve_3.5.3_linux_${CPU}.tar.gz
-
 tar -zxvf /root/cloudreve/cloudreve.zip 
-
 touch /root/cloudreve/conf.ini
 
 echo ""
