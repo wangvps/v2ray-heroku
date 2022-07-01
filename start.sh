@@ -1,6 +1,7 @@
 #!/bin/sh
 
 apt update -y
+apt install -y curl
 
 read -p "请输入CPU架构，例如:amd64 arm64不支持s390x:" CPU
 read -p "请输入安装cloudreve主程序位置:" PATH_TO_CLOUDREVE
@@ -73,3 +74,20 @@ systemctl daemon-reload
 systemctl enable cloudreve
 
 echo 配置完成!请自行启动cloudreve以获得初始密码。命令:/PATH_TO_CLOUDREVE/cloudreve -c /PATH_TO_CLOUDREVE/conf.ini
+echo 开始配置离线下载，使用docker配置
+clear
+
+echo 正在安装docker
+
+curl -fsSL https://get.docker.com | bash
+curl -L "https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+wget git.io/aria2-pro.yml
+read -p "请设置RPC令牌" RPC
+sed -i 's/<TOKEN>/${RPC}/g' aria2-pro.yml
+
+docker-compose -f aria2-pro.yml up -d
+
+echo done!
