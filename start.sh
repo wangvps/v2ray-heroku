@@ -87,7 +87,7 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 wget git.io/aria2-pro.yml
 read -p "请设置RPC令牌:" RPC
-sed -i 's/<TOKEN>/${RPC}/g' aria2-pro.yml
+sed -i 's/P3TERX/${RPC}/g' aria2-pro.yml
 
 docker-compose -f aria2-pro.yml up -d
 
