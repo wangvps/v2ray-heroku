@@ -4,11 +4,10 @@ apt update -y
 apt install -y curl
 
 read -p "请输入CPU架构，例如:amd64 arm64不支持s390x:" CPU
-read -p "请输入安装cloudreve主程序位置:" PATH_TO_CLOUDREVE
-mkdir -p ${PATH_TO_CLOUDREVE}/cloudreve
-wget -O ${PATH_TO_CLOUDREVE}/cloudreve/cloudreve.zip https://github.com/cloudreve/Cloudreve/releases/download/3.5.3/cloudreve_3.5.3_linux_${CPU}.tar.gz
-tar -zxvf ${PATH_TO_CLOUDREVE}/cloudreve/cloudreve.zip 
-touch ${PATH_TO_CLOUDREVE}/cloudreve/conf.ini
+mkdir -p /cloudreve
+wget -O /cloudreve/cloudreve.zip https://github.com/cloudreve/Cloudreve/releases/download/3.5.3/cloudreve_3.5.3_linux_${CPU}.tar.gz
+tar -zxvf /cloudreve/cloudreve.zip 
+touch /cloudreve/conf.ini
 
 read -p "请输入数据库类型，支持sqlite/mysql/mssql/postgres:" SQL_TYPE
 read -p "请输入数据库连接端口:" SQL_PORT
@@ -19,7 +18,7 @@ read -p "请输入数据库链接:" SQL_HOST
 read -p "请输入redis数据库链接，格式 server:port:" REDIS_SERVER
 read -p "请输入redis数据库密码:" REDIS_PASSWORD
 
-cat << EOF > ${PATH_TO_CLOUDREVE}/cloudreve/conf.ini
+cat << EOF > /cloudreve/conf.ini
 [System]
 Debug = false
 Mode = master
@@ -56,8 +55,8 @@ After=mysqld.service
 Wants=network.target
 
 [Service]
-WorkingDirectory=/PATH_TO_CLOUDREVE/cloudreve
-ExecStart=/PATH_TO_CLOUDREVE/cloudreve/cloudreve
+WorkingDirectory=/cloudreve
+ExecStart=/cloudreve/cloudreve
 Restart=on-abnormal
 RestartSec=5s
 KillMode=mixed
@@ -75,6 +74,8 @@ systemctl enable cloudreve
 
 echo 配置完成!请自行启动cloudreve以获得初始密码。命令:/PATH_TO_CLOUDREVE/cloudreve -c /PATH_TO_CLOUDREVE/conf.ini
 echo 开始配置离线下载，使用docker配置
+
+sleep 5
 clear
 
 echo 正在安装docker
