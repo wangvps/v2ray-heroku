@@ -11,7 +11,7 @@ tar -zxvf /root/cloudreve/cloudreve.zip
 touch /root/cloudreve/conf.ini
 read -p "请输入数据库名称" SQL_NAME
 read -p "请输入用户名" SQL_USER
-raed -p "请输入密码" SQL_PASSWORD
+read -p "请输入密码" SQL_PASSWORD
 read -p "请输入数据库链接" SQL_HOST
 
 cat << EOF > /root/cloudreve/conf.ini
