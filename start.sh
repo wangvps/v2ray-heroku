@@ -6,7 +6,7 @@ apt install -y curl
 read -p "请输入CPU架构，例如:amd64 arm64不支持s390x:" CPU
 mkdir -p /cloudreve
 wget -O /cloudreve/cloudreve.tar.gz https://github.com/cloudreve/Cloudreve/releases/download/3.5.3/cloudreve_3.5.3_linux_${CPU}.tar.gz
-tar -zxvf /cloudreve/cloudreve.tar.gz
+tar -zxvf /cloudreve/cloudreve.tar.gz -d /cloudreve
 touch /cloudreve/conf.ini
 
 read -p "请输入数据库类型，支持sqlite/mysql/mssql/postgres:" SQL_TYPE
