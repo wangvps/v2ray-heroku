@@ -1,0 +1,9 @@
+https://azstupan.eu.org {
+  tls /etc/ssl/cert.pem /etc/ssl/key.key
+  proxy / 127.0.0.1:5212 {
+    transparent
+  }
+}
+
+http://azstupan.eu.org, http://www.azstupan.eu.org {
+  redir https://azstupan.eu.org{uri}
