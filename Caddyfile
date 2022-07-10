@@ -1,5 +1,5 @@
-https://azstupan.eu.org {
-  tls /etc/ssl/cert.pem /etc/ssl/key.key
+ azstupan.eu.org {
+  tls 2829519680@qq.com
   proxy / 127.0.0.1:5212 {
     transparent
   }
