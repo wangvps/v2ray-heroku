@@ -1,9 +1,6 @@
- azstupan.eu.org {
-  tls 2829519680@qq.com
-  proxy / 127.0.0.1:5212 {
-    transparent
-  }
+:80 {
+     gzip
+	 proxy / 127.0.0.1:11111 {
+	 websocket
+	 }
 }
-
-http://azstupan.eu.org, http://www.azstupan.eu.org {
-  redir https://azstupan.eu.org{uri}
